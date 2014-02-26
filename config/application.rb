@@ -58,5 +58,11 @@ module MRR
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Was getting this error message on running spec tests "I18n.enforce_available_locales will default 
+    # to true in the future. If you really want to skip validation of your locale you can set 
+    # I18n.enforce_available_locales = false to avoid this message." So thats what I did.
+    I18n.enforce_available_locales = false
+    
   end
 end

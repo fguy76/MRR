@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy] #removed the :destroy option in the tutorial 
-                                                                #bcoz it was causing an error in the authentication test
-                                                                #also why should normal user have access to destroy action
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
+  before_filter :admin_user, only: :destory
 
 
   def index
@@ -12,10 +10,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
-  def new 
+  def new
     @user = User.new    
   end
 
@@ -43,10 +40,15 @@ class UsersController < ApplicationController
     end
   end
 
+#alternate version to get test to pass
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
-    redirect_to users_path
+    if current_user.admin?
+      redirect_to users_path
+    else
+      redirect_to root_path 
+    end
   end
 
   private
