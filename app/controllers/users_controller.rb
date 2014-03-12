@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy] #removed the :destroy option in the tutorial 
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers] #removed the :destroy option in the tutorial 
                                                                 #bcoz it was causing an error in the authentication test
                                                                 #also why should normal user have access to destroy action
   before_filter :correct_user, only: [:edit, :update]
@@ -49,14 +49,22 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  private
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_path, notice: "Please sign in."   
-      end
-    end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  private
 
     def correct_user
       @user = User.find(params[:id])
