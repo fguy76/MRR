@@ -1,5 +1,7 @@
 MRR::Application.routes.draw do
   
+  resources :searches
+
   root to: 'static_pages#home'
   
   resources :users do
