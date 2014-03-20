@@ -1,15 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Keywords:</b>
-  <%= @search.keywords %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @search.category %>
-</p>
+<% provide(:title, 'All users') %>
 
 
-<%= link_to 'Edit', edit_search_path(@search) %> |
-<%= link_to 'Back', searches_path %>
+<%= render :partial => @search.users %>

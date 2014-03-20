@@ -3,6 +3,31 @@ class SearchesController < ApplicationController
  def new
    @search = Search.new
  end
+
+ def index
+    @users = User.find(:all, :conditions => ['name LIKE ?', "A%"])
+  end
+
+  def create
+    @search2 = Search.new(params[:keywords])
+    # tmp = :search
+    @search3 = User.find(:all, :conditions => ['name LIKE ?', "#{@search2}%"])
+    # User.find(:all, :conditions => ['name LIKE ?', "%#{params[:keywords]}%"])
+    render @search3
+  end
+
+#   def index
+#     @users = User.search(params[:search])
+#   end
+
+# def search(search)
+#  if search
+#    where(['name LIKE ?', "%#{search}%"])
+#  else
+#   scoped
+#  end
+# end
+
 end
 
 

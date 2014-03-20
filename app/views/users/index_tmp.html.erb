@@ -1,0 +1,16 @@
+<% provide(:title, 'All users') %>
+
+<% form_for @search_user, :method => 'get' do |f| %>
+    <%= f.label "Find User"  %>
+    <%= f.text_field :search_user %>
+    <%= f.submit "Submit" %>
+  <% end %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @users %>      
+</ul>
+
+<%= will_paginate %>
