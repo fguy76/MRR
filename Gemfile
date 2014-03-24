@@ -7,7 +7,17 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.5'
+
+#from here gems for search
 gem 'ransack'
+gem 'jeweler'  
+gem 'shoulda'
+gem 'httparty'
+gem 'imdb_party', '~> 0.8.0'
+gem 'wikipedia-client'
+gem 'googleajax'
+
+
 
 
 group :development, :test do
