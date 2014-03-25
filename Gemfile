@@ -16,6 +16,8 @@ gem 'httparty'
 gem 'imdb_party', '~> 0.8.0'
 gem 'wikipedia-client'
 gem 'googleajax'
+gem 'rotten-tomatoes', '~> 0.2.0'
+gem 'rottentomatoes'
 
 
 

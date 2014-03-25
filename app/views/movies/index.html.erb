@@ -1,0 +1,19 @@
+<% provide(:title, 'Search movies') %>
+
+<%= form_tag movies_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<h1>Movies found</h1>
+
+
+ 
+
+<% @movies.each do |movie| %>
+  <li><%= movie[:title] + " (#{movie[:year]})" %></li>    
+<% end %>
+
+
