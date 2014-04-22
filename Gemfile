@@ -18,6 +18,15 @@ gem 'wikipedia-client'
 gem 'googleajax'
 gem 'rotten-tomatoes', '~> 0.2.0'
 gem 'rottentomatoes'
+gem 'rotten'
+gem 'badfruit'
+gem "dbpedia"
+gem 'mediawiki-gateway'
+gem 'wikipedia'
+gem 'themoviedb'
+gem 'imdb'
+gem 'rack-webconsole'
+
 
 
 

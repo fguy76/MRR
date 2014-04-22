@@ -1,5 +1,21 @@
-<h1>New movie</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', movies_path %>
+
+<h1><%= "#{@movie_info.details.original_title}" %></h1>
+
+<h2><%= @movie_info.director %></h2>
+
+<%= image_tag("#{@movie_info.poster}") %>
+
+<% @movie_info.cast.map do |x| %>
+<ul>
+<%= link_to "#{ x["name"] }" %> <br/> <%= "#{ x["character"] }"  %>
+</ul>
+<% end %>
+
+
+
+
+
+
+

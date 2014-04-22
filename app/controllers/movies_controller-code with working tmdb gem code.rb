@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
 
   include MoviesHelper
-  
   # GET /movies
   # GET /movies.json
 
@@ -35,9 +34,11 @@ class MoviesController < ApplicationController
   # GET /movies/new
   # GET /movies/new.json
   def new
-   
-    @movie_info = movie_info(params[:id])
-    
+    @movie = look_by_id(params[:id])
+
+    @movie_director = movie_director(params[:id])
+    @movie_cast = movie_cast(params[:id])
+
     
     respond_to do |format|
       format.html # new.html.erb
@@ -95,7 +96,37 @@ class MoviesController < ApplicationController
   end
 
 
-  
-
+  def look(look)
+  Tmdb::Api.key("96d9326a2109f91c149bfc80a0cd7b3f")
+  tmdb_movies_search = Tmdb::Search.new
+  tmdb_movies_search.resource('movie') # determines type of resource
+  tmdb_movies_search.query("#{look}") # the query to search against
+  tmdb_movies_search.fetch
 end
 
+def look_by_id(id)
+  Tmdb::Api.key("96d9326a2109f91c149bfc80a0cd7b3f")
+  @movie = Tmdb::Movie.detail("#{id}")  
+end
+
+def movie_details(id)
+  Tmdb::Api.key("96d9326a2109f91c149bfc80a0cd7b3f")
+  @movie_credits = Tmdb::Movie.credits("#{id}")
+end
+
+def movie_director(id)
+  Tmdb::Api.key("96d9326a2109f91c149bfc80a0cd7b3f")
+  @movie_credits = Tmdb::Movie.credits("#{id}")
+  @movie_director = if h = @movie_credits["crew"].find { |h| h["job"] == "Director" }
+      p h["name"]
+    else
+  puts 'Not found!'
+end
+end
+
+def movie_cast(id)
+  Tmdb::Api.key("96d9326a2109f91c149bfc80a0cd7b3f")
+  @movie_credits = Tmdb::Movie.credits("#{id}")
+  @movie_cast = @movie_credits["cast"]
+end
+end

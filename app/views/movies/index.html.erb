@@ -2,18 +2,26 @@
 
 <%= form_tag movies_path, :method => 'get' do %>
   <p>
-    <%= text_field_tag :search, params[:search] %>
+    <%= text_field_tag :look, params[:look] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
 
-<h1>Movies found</h1>
+<% if @movies.blank? %>
+    Your search did not return any results.
+<% else %>
+<h3>Movies found (<%= @movies.count %>)</h3>
 
-
- 
-
-<% @movies.each do |movie| %>
-  <li><%= movie[:title] + " (#{movie[:year]})" %></li>    
+<% @movies.each do |mov| %>
+  <% mov_id = mov["id"] %>
+  <% mov_poster = "https://image.tmdb.org/t/p"+"/w92"+"#{mov["poster_path"]}" %>
+  <li>
+    <%= link_to image_tag(mov_poster) + "  #{mov["original_title"]}", new_movie_path(id: mov_id) %> 
+  </li>
+      
 <% end %>
+<% end %>
+
+
 
 

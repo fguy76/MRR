@@ -1,0 +1,63 @@
+TEMP 
+
+
+syntax for 'rotten' gem for movies.index.html.erb
+
+<!-- syntax for 'rotten' gem 
+
+<h3>Movies found</h3>
+
+<% @movies.each do |movie| %>
+  <li><%= image_tag(movie.posters["thumbnail"]) %> 
+      <%= link_to movie.title, new_movie_path({movie_name: movie.title, movie_runtime: movie.runtime, 
+        movie_cast: movie.cast.actors.to_a}) %>
+      
+<% end %> -->
+
+
+
+
+
+====================
+
+syntax for 'badfruit' gem for movies.index.html.erb if not searching by id to get director details --
+
+<% @movies.each do |movie| %>
+  <li><%= image_tag(movie.posters.thumbnail) %> 
+      <%= link_to movie.name, new_movie_path({movie_name: movie.name, movie_runtime: movie.runtime, 
+        movie_cast: movie.cast, movie_poster: movie.posters.profile}) %>
+
+==
+  
+syntax for 'badfruit' gem for movies.index.html.erb if searching by id to get director details & then saving to db --
+
+  <% @movies.each do |movie| %>
+  <li><%= link_to movie.title, new_movie_path({movie_name: movie.description, }) %>
+      
+<% end %>
+      
+================
+
+syntax for 'badfruit' gem for movies.new.html.erb -- 
+
+
+% movie_name = params[:movie_name]%>
+
+
+<h1><%= "#{movie_name}" %></h1>
+
+=====================
+
+<% movie_runtime = params[:movie_runtime] %>
+<% movie_cast = params[:movie_cast] %>
+<% movie_poster = params[:movie_poster] %>
+
+<h1><%= "#{movie_name}" %></h1>
+<h2><%= "#{movie_runtime}" %></h2>
+
+<% movie_cast.map do |x| %>
+<ul>
+<%= link_to "#{ x["name"] }" %> <br/> <%= "#{ x["characters"] }"  %>
+</ul>
+<% end %>
+<%= image_tag("#{movie_poster}") %>
