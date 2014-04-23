@@ -27,7 +27,9 @@ gem 'themoviedb'
 gem 'imdb'
 gem 'rack-webconsole'
 
+#gems for rating
 
+gem 'ajaxful_rating', '>= 3.0.0.beta8'
 
 
 

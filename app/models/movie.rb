@@ -3,8 +3,8 @@ class Movie < ActiveRecord::Base
 
   validates :title, uniqueness: { case_sensitive: false }
 
+ajaxful_rateable :stars => 10, :dimensions => [:description]
 
-# syntax for 'themoviedb' gem -
 
 
 
