@@ -27,8 +27,8 @@ gem 'themoviedb'
 gem 'imdb'
 gem 'rack-webconsole'
 
-
-
+#ratings gem
+gem 'letsrate'
 
 
 group :development, :test do

@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
 
   validates :title, uniqueness: { case_sensitive: false }
 
-
+letsrate_rateable "speed"
 # syntax for 'themoviedb' gem -
 
 
