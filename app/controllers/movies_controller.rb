@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
   # GET /movies/new
   # GET /movies/new.json
   def new
-   
+   @movie = Movie.new(params[:movie])
     @movie_info = movie_info(params[:id])
     
     
