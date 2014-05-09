@@ -13,9 +13,7 @@
 </ul>
 <% end %>
 
-<h1>
-Speed : <%= rating_for @movie, "speed", :star => 10 %>
+<div id="star">
+Speed : <%= rating_for_user @movie, current_user, "speed", :star => 10 %>
 
-
-
-</h1>
+</div>
