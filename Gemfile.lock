@@ -1,7 +1,7 @@
 PATH
-  remote: C:/Users/T.R.N/Downloads/trishul's/Rails stuff/etc/letsrate-v1.0.8
+  remote: C:/Users/T.R.N/Downloads/trishul's/Rails stuff/etc/letsrate-master-samuraraujo
   specs:
-    letsrate (1.0.8)
+    letsrate (1.0.9)
 
 GEM
   remote: https://rubygems.org/
