@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+form.rating_ballot input#rating_submit { display: none; }
+form.rating_ballot input.rating_button { display: none; }
+
+form.rating_ballot label.rating { cursor: pointer; display: block; height: 20px; width: 20px; float: left; }
+form.rating_ballot label.rating span { display: none; }
+form.rating_ballot label.rating { background-image: url(/assets/star-off.png); }
+form.rating_ballot label.rating.bright { background-image: url(/assets/star-on.png); }
+form.rating_ballot label.rating.glow { background-image: url(/assets/images/star-half.png); }

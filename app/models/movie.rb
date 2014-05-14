@@ -3,6 +3,17 @@ class Movie < ActiveRecord::Base
 
   validates :title, uniqueness: { case_sensitive: false }
 
+has_many :ratings
+has_many :raters, :through => :ratings, :source => :users
+
+# def average_rating
+#     @value = 0
+#     self.ratings.each do |rating|
+#         @value = @value + rating.value
+#     end
+#     @total = self.ratings.size
+#     @value.to_f / @total.to_f
+# end
 
 # syntax for 'themoviedb' gem -
 

@@ -2,6 +2,7 @@ MRR::Application.routes.draw do
   
   resources :movies
 
+resources :ratings
   root to: 'static_pages#home'
   
   resources :users do

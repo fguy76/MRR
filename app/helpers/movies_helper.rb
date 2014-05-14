@@ -28,9 +28,30 @@ require 'ostruct'
   end
 
   
+def rating_ballot
+  if @rating = current_user.ratings.find_by_movie_id(params[:id])
+    @rating
+  else
+    current_user.ratings.new
+  end
+end
 
 
+def current_user_rating
+    if @rating = current_user.ratings.find_by_movie_id(params[:id])
+        @rating.value
+    else
+        "N/A"
+    end
+end
 
-
+def average_rating(movie)
+    @value = 0
+    movie.ratings.each do |rating|
+        @value = @value + rating.value
+    end
+    @total = movie.ratings.size
+    @value.to_f / @total.to_f
+end
 
 end
