@@ -30,7 +30,7 @@ gem 'imdb'
 gem 'rack-webconsole'
 
 #ratings gem
-gem 'letsrate',  :path => "C:/Users/T.R.N/Downloads/trishul's/Rails stuff/etc/letsrate-master-samuraraujo"
+gem 'letsrate',  :path => "C:/Users/T.R.N/Downloads/trishul's/Rails stuff/etc/letsrate-master-brookzhang-v1.09-edited"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

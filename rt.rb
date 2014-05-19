@@ -1,3 +1,13 @@
+# syntax for brookzhang-v1.09-edited xx.html.erb
+
+Speed : <%= rating_for_user @movie, current_user, "speed", :star => 10 %>
+ 
+
+
+<!-- for gosuto-v1.08-edited-->
+Speed : <%= rating_for @movie, "speed", :star => 10, :userid => current_user.id %>
+
+
 #####################
 
 # syntax for 'BadFruit' gem --
