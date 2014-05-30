@@ -2,10 +2,11 @@
 
 Speed : <%= rating_for_user @movie, current_user, "speed", :star => 10 %>
  
-
+Price : <%= rating_for_user @movie, current_user, "price", :star => 10 %>
 
 <!-- for gosuto-v1.08-edited-->
 Speed : <%= rating_for @movie, "speed", :star => 10, :userid => current_user.id %>
+
 
 
 #####################

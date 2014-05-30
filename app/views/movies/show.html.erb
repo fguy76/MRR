@@ -10,15 +10,36 @@
   <%= @movie.description %>
 </p>
 
-
+<p>
+<% if signed_in? %>
 Speed : <%= rating_for_user @movie, current_user, "speed", :star => 10, :not_rated_text => "Login first" %>
 Price : <%= rating_for_user @movie, current_user, "price", :star => 10 %>
 
+</p>
 
-Avg Speed : <%= rating_for @movie, "speed", :star => 10 %>
-Avg Price : <%= rating_for @movie, "price", :star => 10 %>
+<p>
+Avg Speed : <%= rating_for @movie, "speed", :star => 10, display_average: true %>
+Avg Price : <%= rating_for @movie, "price", :star => 10, display_average: true %>
+</p>
 
-Total Rating : <%= total_rating_for @movie, current_user, "price", :star => 20 %>
+<p>
+<div id= "totalrating">
+<%= render 'total_rating' %>
+</div>
+</p>
+
+<% else %>
+<p>
+Speed : <%= rating_for @movie, "speed", :star => 10, :not_rated_text => "Login first" %>
+Price : <%= rating_for @movie, "price", :star => 10 %>
+
+
+Avg Speed : <%= rating_for @movie, "speed", :star => 10, display_average: true %>
+Avg Price : <%= rating_for @movie, "price", :star => 10, display_average: true %>
+</p>
+<% end %>
+
+
 
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
