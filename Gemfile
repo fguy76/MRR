@@ -33,7 +33,7 @@ gem 'rack-webconsole'
 gem 'letsrate',  :path => "C:/Users/T.R.N/Downloads/trishul's/Rails stuff/etc/letsrate-master-brookzhang-v1.09-edited"
 
 #gem to keep track of total of ratings
-gem 'counter_culture', '~> 0.1.18'
+gem 'counter_culture', :git => "https://github.com/dorilla/counter_culture"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
