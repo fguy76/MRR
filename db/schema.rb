@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429011821) do
+ActiveRecord::Schema.define(:version => 20140531003848) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20140429011821) do
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], :name => "index_rating_caches_on_cacheable_id_and_cacheable_type"
 
+  create_table "ratings", :force => true do |t|
+    t.string   "user_id"
+    t.string   "movie_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -64,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20140429011821) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "total_ratings", :force => true do |t|
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "movie_rating_total", :default => 0, :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
