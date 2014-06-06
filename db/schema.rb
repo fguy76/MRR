@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429011821) do
+ActiveRecord::Schema.define(:version => 20140603002933) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -33,10 +33,11 @@ ActiveRecord::Schema.define(:version => 20140429011821) do
     t.integer  "rater_id"
     t.integer  "rateable_id"
     t.string   "rateable_type"
-    t.float    "stars",         :null => false
+    t.float    "stars",          :null => false
     t.string   "dimension"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.float    "total_of_stars"
   end
 
   add_index "rates", ["rateable_id", "rateable_type"], :name => "index_rates_on_rateable_id_and_rateable_type"
@@ -54,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20140429011821) do
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], :name => "index_rating_caches_on_cacheable_id_and_cacheable_type"
 
+  create_table "ratings", :force => true do |t|
+    t.string   "user_id"
+    t.string   "movie_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -64,6 +73,24 @@ ActiveRecord::Schema.define(:version => 20140429011821) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "total_of_ratings", :force => true do |t|
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.integer  "rater_id"
+    t.integer  "total_of_rating"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "total_of_ratings", ["rateable_id", "rateable_type"], :name => "index_total_of_ratings_on_rateable_id_and_rateable_type"
+  add_index "total_of_ratings", ["rater_id"], :name => "index_total_of_ratings_on_rater_id"
+
+  create_table "total_ratings", :force => true do |t|
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "movie_rating_total", :default => 0, :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
